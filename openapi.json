@@ -180,7 +180,7 @@
             }
           },
           "400": {
-            "description": "invalid request object",
+            "description": "Invalid request object",
             "content": {
               "application/json": {
                 "schema": {
@@ -191,7 +191,11 @@
                       "items": {
                         "type": "string"
                       },
-                      "example": ["Missing name", "Missing budget"]
+                      "example": [
+                        "Missing make",
+                        "Missing model",
+                        "Mileage must be a positive number"
+                      ]
                     }
                   }
                 }
@@ -207,7 +211,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "This car is already in the database"
+                      "example": "vin of cars must be unique"
                     }
                   }
                 }
@@ -215,7 +219,7 @@
             }
           },
           "500": {
-            "description": "server error",
+            "description": "Server error",
             "content": {
               "application/json": {
                 "schema": {

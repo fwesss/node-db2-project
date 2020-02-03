@@ -9,7 +9,10 @@
     "check-types": "tsc --watch",
     "format": "yarn run prettier --ignore-path .gitignore --write",
     "lint": "eslint --ext .ts .",
+    "migrate: rollback": "npx knex migrate:rollback",
+    "migrate:latest": "npx knex migrate:latest",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(json|js|ts)\"",
+    "seed:run": "npx knex seed:run",
     "server": "tsc && nodemon ./build/index.js",
     "validate": "npm-run-all --parallel check-format lint"
   },

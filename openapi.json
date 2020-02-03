@@ -1,141 +1,161 @@
 {
-  "openapi" : "3.0.0",
-  "servers" : [ {
-    "url" : "/api"
-  } ],
-  "info" : {
-    "description" : "Car Dealer API",
-    "version" : "1.0.0",
-    "title" : "Car Dealer API",
-    "contact" : {
-      "email" : "feller.westley@gmail.com"
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/api"
+    }
+  ],
+  "info": {
+    "description": "Car Dealer API",
+    "version": "1.0.0",
+    "title": "Car Dealer API",
+    "contact": {
+      "email": "feller.westley@gmail.com"
     }
   },
-  "paths" : {
-    "/cars" : {
-      "get" : {
-        "summary" : "Retrieves queried cars",
-        "operationId" : "retrieveAllCars",
-        "description" : "Get a list of all cars",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "limit",
-          "schema" : {
-            "type" : "integer",
-            "minimum" : 0
+  "paths": {
+    "/cars": {
+      "get": {
+        "summary": "Retrieves queried cars",
+        "operationId": "retrieveAllCars",
+        "description": "Get a list of all cars",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "The number of cars to return",
+            "example": 5
           },
-          "description" : "The number of cars to return",
-          "example" : 5
-        }, {
-          "in" : "query",
-          "name" : "sortby",
-          "schema" : {
-            "type" : "string",
-            "enum" : [ "id", "vin", "make", "model", "mileage", "transmission", "title" ]
+          {
+            "in": "query",
+            "name": "sortby",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "vin",
+                "make",
+                "model",
+                "mileage",
+                "transmission",
+                "title"
+              ]
+            },
+            "description": "The column to sort the cars by",
+            "example": "make"
           },
-          "description" : "The column to sort the cars by",
-          "example" : "make"
-        }, {
-          "in" : "query",
-          "name" : "sortdir",
-          "schema" : {
-            "type" : "string",
-            "enum" : [ "desc", "asc" ]
-          },
-          "description" : "The direction to sort the cars",
-          "example" : "desc"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Queried cars",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "type" : "object",
-                    "required" : [ "id", "vin", "make", "model", "mileage" ],
-                    "properties" : {
-                      "id" : {
-                        "type" : "integer",
-                        "minimum" : 1
+          {
+            "in": "query",
+            "name": "sortdir",
+            "schema": {
+              "type": "string",
+              "enum": ["desc", "asc"]
+            },
+            "description": "The direction to sort the cars",
+            "example": "desc"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Queried cars",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["id", "vin", "make", "model", "mileage"],
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "minimum": 1
                       },
-                      "vin" : {
-                        "type" : "string"
+                      "vin": {
+                        "type": "string"
                       },
-                      "make" : {
-                        "type" : "string"
+                      "make": {
+                        "type": "string"
                       },
-                      "model" : {
-                        "type" : "string"
+                      "model": {
+                        "type": "string"
                       },
-                      "mileage" : {
-                        "type" : "integer",
-                        "minimum" : 0
+                      "mileage": {
+                        "type": "integer",
+                        "minimum": 0
                       },
-                      "transmission" : {
-                        "type" : "string"
+                      "transmission": {
+                        "type": "string"
                       },
-                      "title" : {
-                        "type" : "string"
+                      "title": {
+                        "type": "string"
                       }
                     }
                   },
-                  "example" : [ {
-                    "id" : 3,
-                    "vin" : "19XFB2F5XCE060916",
-                    "make" : "Fiat",
-                    "model" : "500",
-                    "mileage" : 1267,
-                    "transmission" : "manual",
-                    "title" : "salvage"
-                  }, {
-                    "id" : 2,
-                    "vin" : "1FDWE3FL0DDA71580",
-                    "make" : "Ford",
-                    "model" : "F150",
-                    "mileage" : 23675,
-                    "transmission" : "automatic",
-                    "title" : "salvage"
-                  }, {
-                    "id" : 37,
-                    "vin" : "3VWRK69M93M177185",
-                    "make" : "Honda",
-                    "model" : "Civic",
-                    "mileage" : 165499,
-                    "transmission" : "automatic",
-                    "title" : "clean"
-                  }, {
-                    "id" : 6,
-                    "vin" : "3LNHM26T57R639971",
-                    "make" : "Suburu",
-                    "model" : "Impreza",
-                    "mileage" : 55487,
-                    "transmission" : "manual",
-                    "title" : "clean"
-                  }, {
-                    "id" : 12,
-                    "vin" : "1D4HB48D14F176699",
-                    "make" : "Toyota",
-                    "model" : "Camry",
-                    "mileage" : 48351,
-                    "transmission" : "automatic",
-                    "title" : "clean"
-                  } ]
+                  "example": [
+                    {
+                      "id": 3,
+                      "vin": "19XFB2F5XCE060916",
+                      "make": "Fiat",
+                      "model": "500",
+                      "mileage": 1267,
+                      "transmission": "manual",
+                      "title": "salvage"
+                    },
+                    {
+                      "id": 2,
+                      "vin": "1FDWE3FL0DDA71580",
+                      "make": "Ford",
+                      "model": "F150",
+                      "mileage": 23675,
+                      "transmission": "automatic",
+                      "title": "salvage"
+                    },
+                    {
+                      "id": 37,
+                      "vin": "3VWRK69M93M177185",
+                      "make": "Honda",
+                      "model": "Civic",
+                      "mileage": 165499,
+                      "transmission": "automatic",
+                      "title": "clean"
+                    },
+                    {
+                      "id": 6,
+                      "vin": "3LNHM26T57R639971",
+                      "make": "Suburu",
+                      "model": "Impreza",
+                      "mileage": 55487,
+                      "transmission": "manual",
+                      "title": "clean"
+                    },
+                    {
+                      "id": 12,
+                      "vin": "1D4HB48D14F176699",
+                      "make": "Toyota",
+                      "model": "Camry",
+                      "mileage": 48351,
+                      "transmission": "automatic",
+                      "title": "clean"
+                    }
+                  ]
                 }
               }
             }
           },
-          "500" : {
-            "description" : "Server error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "The information could not be retrieved"
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "The information could not be retrieved"
                     }
                   }
                 }
@@ -144,66 +164,66 @@
           }
         }
       },
-      "post" : {
-        "summary" : "Adds a car",
-        "operationId" : "addCar",
-        "description" : "Adds a car to the database",
-        "responses" : {
-          "201" : {
-            "description" : "car added",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Car"
+      "post": {
+        "summary": "Adds a car",
+        "operationId": "addCar",
+        "description": "Adds a car to the database",
+        "responses": {
+          "201": {
+            "description": "car added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
                 }
               }
             }
           },
-          "400" : {
-            "description" : "invalid request object",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "errors" : {
-                      "type" : "array",
-                      "items" : {
-                        "type" : "string"
+          "400": {
+            "description": "invalid request object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
                       },
-                      "example" : [ "Missing name", "Missing budget" ]
+                      "example": ["Missing name", "Missing budget"]
                     }
                   }
                 }
               }
             }
           },
-          "409" : {
-            "description" : "A car with that VIN already exists in the database",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "This car is already in the database"
+          "409": {
+            "description": "A car with that VIN already exists in the database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "This car is already in the database"
                     }
                   }
                 }
               }
             }
           },
-          "500" : {
-            "description" : "server error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "The information could not be added"
+          "500": {
+            "description": "server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "The information could not be added"
                     }
                   }
                 }
@@ -211,99 +231,101 @@
             }
           }
         },
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "type" : "object",
-                "required" : [ "vin", "make", "model", "mileage" ],
-                "properties" : {
-                  "vin" : {
-                    "type" : "string",
-                    "example" : "1HGCM82633A004352"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["vin", "make", "model", "mileage"],
+                "properties": {
+                  "vin": {
+                    "type": "string",
+                    "example": "1HGCM82633A004352"
                   },
-                  "make" : {
-                    "type" : "string",
-                    "example" : "Honda"
+                  "make": {
+                    "type": "string",
+                    "example": "Honda"
                   },
-                  "model" : {
-                    "type" : "string",
-                    "example" : "Fit"
+                  "model": {
+                    "type": "string",
+                    "example": "Fit"
                   },
-                  "mileage" : {
-                    "type" : "integer",
-                    "minimum" : 0,
-                    "example" : 56783
+                  "mileage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "example": 56783
                   },
-                  "transmission" : {
-                    "type" : "string",
-                    "example" : "automatic"
+                  "transmission": {
+                    "type": "string",
+                    "example": "automatic"
                   },
-                  "title" : {
-                    "type" : "string",
-                    "example" : "clean"
+                  "title": {
+                    "type": "string",
+                    "example": "clean"
                   }
                 }
               }
             }
           },
-          "description" : "Car to add"
+          "description": "Car to add"
         }
       }
     },
-    "/cars/{id}" : {
-      "get" : {
-        "summary" : "Retrieves a specified car by ID",
-        "operationId" : "retrieveOneCar",
-        "description" : "Get one car by ID",
-        "parameters" : [ {
-          "in" : "path",
-          "name" : "id",
-          "required" : true,
-          "schema" : {
-            "type" : "integer",
-            "minimum" : 1
-          },
-          "example" : 12,
-          "description" : "The car ID"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "One car",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Car"
+    "/cars/{id}": {
+      "get": {
+        "summary": "Retrieves a specified car by ID",
+        "operationId": "retrieveOneCar",
+        "description": "Get one car by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 12,
+            "description": "The car ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One car",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
                 }
               }
             }
           },
-          "404" : {
-            "description" : "Invalid ID",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "Invalid car ID"
+          "404": {
+            "description": "Invalid ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Invalid car ID"
                     }
                   }
                 }
               }
             }
           },
-          "500" : {
-            "description" : "Server error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "The information could not be retrieved"
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "The information could not be retrieved"
                     }
                   }
                 }
@@ -312,125 +334,127 @@
           }
         }
       },
-      "put" : {
-        "summary" : "Updates a car",
-        "operationId" : "updateOneCar",
-        "description" : "Updates a car in the database",
-        "parameters" : [ {
-          "in" : "path",
-          "name" : "id",
-          "required" : true,
-          "schema" : {
-            "type" : "integer",
-            "minimum" : 1
-          },
-          "example" : 12,
-          "description" : "The car ID"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "item updated",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "required" : [ "id", "vin", "make", "model", "mileage" ],
-                  "properties" : {
-                    "id" : {
-                      "type" : "integer",
-                      "example" : 12
+      "put": {
+        "summary": "Updates a car",
+        "operationId": "updateOneCar",
+        "description": "Updates a car in the database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 12,
+            "description": "The car ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "item updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["id", "vin", "make", "model", "mileage"],
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 12
                     },
-                    "vin" : {
-                      "type" : "string",
-                      "example" : "1HGCM82633A004352"
+                    "vin": {
+                      "type": "string",
+                      "example": "1HGCM82633A004352"
                     },
-                    "make" : {
-                      "type" : "string",
-                      "example" : "Honda"
+                    "make": {
+                      "type": "string",
+                      "example": "Honda"
                     },
-                    "model" : {
-                      "type" : "string",
-                      "example" : "Fit"
+                    "model": {
+                      "type": "string",
+                      "example": "Fit"
                     },
-                    "mileage" : {
-                      "type" : "integer",
-                      "minimum" : 0,
-                      "example" : 75000
+                    "mileage": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "example": 75000
                     },
-                    "transmission" : {
-                      "type" : "string",
-                      "example" : "automatic"
+                    "transmission": {
+                      "type": "string",
+                      "example": "automatic"
                     },
-                    "title" : {
-                      "type" : "string",
-                      "example" : "salvage"
+                    "title": {
+                      "type": "string",
+                      "example": "salvage"
                     }
                   }
                 }
               }
             }
           },
-          "400" : {
-            "description" : "invalid input, object invalid",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "errors" : {
-                      "type" : "array",
-                      "items" : {
-                        "type" : "string"
+          "400": {
+            "description": "invalid input, object invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
                       },
-                      "example" : [ "Missing name", "Missing budget" ]
+                      "example": ["Missing name", "Missing budget"]
                     }
                   }
                 }
               }
             }
           },
-          "404" : {
-            "description" : "Invalid ID",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "Invalid car ID"
+          "404": {
+            "description": "Invalid ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Invalid car ID"
                     }
                   }
                 }
               }
             }
           },
-          "409" : {
-            "description" : "A car with that VIN already exists in the database",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "This car is already in the database"
+          "409": {
+            "description": "A car with that VIN already exists in the database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "This car is already in the database"
                     }
                   }
                 }
               }
             }
           },
-          "500" : {
-            "description" : "Server error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "The information could not be updated"
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "The information could not be updated"
                     }
                   }
                 }
@@ -438,90 +462,92 @@
             }
           }
         },
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "type" : "object",
-                "required" : [ "vin", "make", "model", "mileage" ],
-                "properties" : {
-                  "vin" : {
-                    "type" : "string",
-                    "example" : "1HGCM82633A004352"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["vin", "make", "model", "mileage"],
+                "properties": {
+                  "vin": {
+                    "type": "string",
+                    "example": "1HGCM82633A004352"
                   },
-                  "make" : {
-                    "type" : "string",
-                    "example" : "Honda"
+                  "make": {
+                    "type": "string",
+                    "example": "Honda"
                   },
-                  "model" : {
-                    "type" : "string",
-                    "example" : "Fit"
+                  "model": {
+                    "type": "string",
+                    "example": "Fit"
                   },
-                  "mileage" : {
-                    "type" : "integer",
-                    "minimum" : 0,
-                    "example" : 75000
+                  "mileage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "example": 75000
                   },
-                  "transmission" : {
-                    "type" : "string",
-                    "example" : "automatic"
+                  "transmission": {
+                    "type": "string",
+                    "example": "automatic"
                   },
-                  "title" : {
-                    "type" : "string",
-                    "example" : "salvage"
+                  "title": {
+                    "type": "string",
+                    "example": "salvage"
                   }
                 }
               }
             }
           },
-          "description" : "Car to update"
+          "description": "Car to update"
         }
       },
-      "delete" : {
-        "summary" : "Deletes a car",
-        "operationId" : "deleteOneCar",
-        "description" : "Deletes a car from the database",
-        "parameters" : [ {
-          "in" : "path",
-          "name" : "id",
-          "required" : true,
-          "schema" : {
-            "type" : "integer",
-            "minimum" : 1,
-            "example" : 2
+      "delete": {
+        "summary": "Deletes a car",
+        "operationId": "deleteOneCar",
+        "description": "Deletes a car from the database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 2
+            },
+            "description": "The car ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Car has been deleted"
           },
-          "description" : "The car ID"
-        } ],
-        "responses" : {
-          "204" : {
-            "description" : "Car has been deleted"
-          },
-          "404" : {
-            "description" : "Invalid ID",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "Invalid car ID"
+          "404": {
+            "description": "Invalid ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Invalid car ID"
                     }
                   }
                 }
               }
             }
           },
-          "500" : {
-            "description" : "Server error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "The information could not be updated"
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "The information could not be updated"
                     }
                   }
                 }
@@ -532,41 +558,41 @@
       }
     }
   },
-  "components" : {
-    "schemas" : {
-      "Car" : {
-        "type" : "object",
-        "required" : [ "id", "vin", "make", "model", "mileage" ],
-        "properties" : {
-          "id" : {
-            "type" : "integer",
-            "example" : 12,
-            "minimum" : 1
+  "components": {
+    "schemas": {
+      "Car": {
+        "type": "object",
+        "required": ["id", "vin", "make", "model", "mileage"],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 12,
+            "minimum": 1
           },
-          "vin" : {
-            "type" : "string",
-            "example" : "1HGCM82633A004352"
+          "vin": {
+            "type": "string",
+            "example": "1HGCM82633A004352"
           },
-          "make" : {
-            "type" : "string",
-            "example" : "Honda"
+          "make": {
+            "type": "string",
+            "example": "Honda"
           },
-          "model" : {
-            "type" : "string",
-            "example" : "Fit"
+          "model": {
+            "type": "string",
+            "example": "Fit"
           },
-          "mileage" : {
-            "type" : "integer",
-            "example" : 56783,
-            "minimum" : 0
+          "mileage": {
+            "type": "integer",
+            "example": 56783,
+            "minimum": 0
           },
-          "transmission" : {
-            "type" : "string",
-            "example" : "automatic"
+          "transmission": {
+            "type": "string",
+            "example": "automatic"
           },
-          "title" : {
-            "type" : "string",
-            "example" : "clean"
+          "title": {
+            "type": "string",
+            "example": "clean"
           }
         }
       }

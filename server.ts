@@ -7,7 +7,7 @@ import express, {
 } from 'express'
 import morgan from 'morgan'
 import { serve, setup } from 'swagger-ui-express'
-// import carsRouter from './resources/cars/cars.router'
+import carsRouter from './resources/cars/cars.router'
 
 import swaggerDocument from './openapi.json'
 
@@ -31,7 +31,7 @@ server.use(morgan('dev'))
 server.use(json())
 server.use(jsonSyntaxErrorHandler)
 
-// server.use('/api/cars', carsRouter)
+server.use('/api/cars', carsRouter)
 
 server.get('/', (_req, res) => res.send(`<h1>Node DB2 Project</h1>`))
 

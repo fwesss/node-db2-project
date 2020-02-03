@@ -1,9 +1,9 @@
 import { QueryBuilder } from 'knex'
 import db from '../../data/dbConfig'
 
-type Id = number | string
+export type Id = number | string
 
-type Car = {
+export type Car = {
   vin: string
   make: string
   model: string
